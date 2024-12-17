@@ -83,7 +83,6 @@ if rating is not None:
     st.rerun()
 
 # Compute recommendations
-@st.cache_data
 def myIBCF(newuser):
     newuser_not_na = (1 - np.isnan(newuser)).astype(float)
     rat_preds = ((S_mat.fillna(0) @ newuser.fillna(0)) / (S_mat.fillna(0) @ newuser_not_na))
@@ -100,16 +99,12 @@ recs = myIBCF(st.session_state.w)
 
 # Display recommendations
 st.subheader("Recommendations")
-
-@st.cache_data
-def show_recs(recs):
-    for i in range(2):
-        cols = st.columns(5)
-        j = 0
-        for index, row in recs.iloc[(5 * i):(5 * i + 5), :].iterrows():
-            with cols[j]:
-                mov_url = f"https://liangfgithub.github.io/MovieImages/{index[1:]}.jpg"
-                mov_ttl = movs.loc[index, "Title"]
-                st.image(mov_url, caption=mov_ttl, width=100)
-                j += 1
-show_recs(recs)
+for i in range(2):
+    cols = st.columns(5)
+    j = 0
+    for index, row in recs.iloc[(5 * i):(5 * i + 5), :].iterrows():
+        with cols[j]:
+            mov_url = f"https://liangfgithub.github.io/MovieImages/{index[1:]}.jpg"
+            mov_ttl = movs.loc[index, "Title"]
+            st.image(mov_url, caption=mov_ttl, width=100)
+            j += 1
