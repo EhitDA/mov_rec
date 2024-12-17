@@ -16,7 +16,7 @@ def load_S_mat():
 
 movs = load_movs()
 
-#S_mat = load_S_mat()
+S_mat = load_S_mat()
 
 st.header("Movie Recommender")
 
@@ -39,26 +39,3 @@ if rating is not None:
     st.write(f"You gave a rating of {rating + 1} star(s)!")
 
 
-df = pd.DataFrame({
-  'first column': [1, 2, 3, 4],
-  'second column': [10, 20, 30, 40]
-})
-
-df
-
-x = st.slider('x')  # 👈 this is a widget
-st.write(x, 'squared is', x * x)
-
-
-option = st.selectbox(
-    'Which number do you like best?',
-    [1, 2, 3, 4, 5]
-)
-
-'You selected: ', option
-
-
-
-
-st.header(f"This page has run {st.session_state.counter} times.")
-st.button("Run it again")
