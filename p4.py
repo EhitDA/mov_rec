@@ -16,7 +16,7 @@ def load_S_mat():
 
 movs = load_movs()
 
-S_mat = load_S_mat()
+#S_mat = load_S_mat()
 
 st.header("Movie Recommender")
 
