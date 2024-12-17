@@ -52,12 +52,15 @@ def rec_rating():
 def dec_mov_num():
     if st.session_state.mov_num != 1:
         st.session_state.mov_num -= 1
+    time.sleep(1)
 
 def inc_mov_num():
     st.session_state.mov_num += 1
+    time.sleep(1)
 
 def reset_rat():
     st.session_state.w = pd.Series([np.nan] * 3706, index=S_mat.index)
+    time.sleep(1)
 
 with col2:
     rating = st.feedback("stars", key=f"fb_{st.session_state.mov_num}", on_change=rec_rating)
